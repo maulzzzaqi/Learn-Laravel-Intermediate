@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\Facades\App\Data\Tabungan;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return dd(app('maul'), app('maul'));
+    return view('welcome');
 });
 
 app()->singleton('maul', function () {
@@ -27,3 +28,6 @@ app()->singleton('maul', function () {
 // app()->bind('hello', function () {
 
 // })
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
